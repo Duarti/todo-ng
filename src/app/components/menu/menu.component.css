@@ -1,0 +1,32 @@
+header {
+  width: 100%;
+  background-color: #d2ba53;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#atualizacao {
+  display: flex;
+}
+
+#atualizacao div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: right;
+  margin-right: 5px;
+}
+
+#atualizacao div p {
+  margin: 0;
+}
+
+#busca {
+  flex: 2;
+  padding: 0 10px;
+  max-width: 550px;
+}

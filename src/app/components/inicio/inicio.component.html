@@ -1,0 +1,25 @@
+<div id="app">
+  <app-menu></app-menu>
+  <div class="container">
+    <div class="barra-top">
+      <form id="filtros">
+        <label>
+          <input type="radio" name="filtro" value="todos" checked>
+          todos
+        </label>
+        <label>
+          <input type="radio" name="filtro" value="completados">
+          completados
+        </label>
+        <label>
+          <input type="radio" name="filtro" value="inacabados">
+          inacabados
+        </label>
+      </form>
+      <button class="btn btn-default">CRIAR UMA NOTA</button>
+    </div>
+    <app-flash-message [aberto]="false">
+      TEST
+    </app-flash-message>
+  </div>
+</div>
