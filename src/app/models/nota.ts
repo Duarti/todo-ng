@@ -14,12 +14,4 @@ export class Nota {
     this.criacao = criacao;
     this.usuario_id = usuario_id;
   }
-
-  constructor(titulo, tarefas) {
-    this.titulo = titulo;
-    this.tarefas = tarefas;
-  }
-
-  constructor() {
-  }
 }

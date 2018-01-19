@@ -3,4 +3,5 @@ export class Tarefa {
   titulo: string;
   feita: boolean;
   nota_id: number;
+
 }

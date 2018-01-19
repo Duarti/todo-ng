@@ -1,0 +1,14 @@
+#nao-encontrada {
+  width: 100vw;
+  height: 100vh;
+  background-color: #d2ba53;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+#nao-encontrada img{
+  width: 220px;
+}

@@ -1,0 +1,13 @@
+.tarefas ul li {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tarefas ul li:hover button{
+  visibility: initial;
+}
+
+.tarefas ul li button{
+  visibility: hidden;
+}

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -7,8 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  @Input() atualizacao;
+  @Input() atualizar;
+  @Input() busca;
+  textBusca = '';
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
+  }
+
+  buscar() {
+    this.busca.text = this.textBusca;
+    this.atualizar();
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['login']);
   }
 }

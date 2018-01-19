@@ -11,6 +11,11 @@ import {NotaService} from './services/nota.service';
 import {NotaComponent} from './components/nota/nota.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FlashMessageComponent} from './components/flash-message/flash-message.component';
+import {AuthService} from './services/auth.service';
+import {AuthGuard} from './guards/auth.guard';
+import {FormsModule} from '@angular/forms';
+import {TarefaService} from './services/tarefa.service';
+import { NaoEncontradaComponent } from './components/nao-encontrada/nao-encontrada.component';
 
 
 @NgModule({
@@ -20,16 +25,26 @@ import {FlashMessageComponent} from './components/flash-message/flash-message.co
     MenuComponent,
     LoginComponent,
     NotaComponent,
-    FlashMessageComponent
+    FlashMessageComponent,
+    NaoEncontradaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [NotaService],
+  providers: [
+    NotaService,
+    AuthService,
+    TarefaService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent],
-  exports: [InicioComponent, FlashMessageComponent]
+  exports: [
+    InicioComponent,
+    FlashMessageComponent
+  ]
 })
 export class AppModule {
 }

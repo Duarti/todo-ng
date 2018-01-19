@@ -1,5 +1,12 @@
 <div class="overlay" *ngIf="aberto">
   <div class="modal">
     <ng-content></ng-content>
+    <div class="actions">
+      <div *ngFor="let acao of acoes">
+        <button (click)="acao.acao()" class="btn btn-default">
+          {{acao.titulo}}
+        </button>
+      </div>
+    </div>
   </div>
 </div>

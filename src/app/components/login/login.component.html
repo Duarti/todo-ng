@@ -1,8 +1,10 @@
 <div id="app">
   <h1>SENAI KEEP</h1>
-  <form id="login-box">
-    <input type="text" id="usuario" placeholder="USUARIO">
-    <input type="password" id="senha" placeholder="SENHA">
+  <form id="login-box" (submit)="logar()">
+    <input type="text" id="usuario" placeholder="USUARIO" [(ngModel)]="usuario.usuario" name="usuario">
+    <span class="error" *ngIf="error.usuario">{{error.usuario}}</span>
+    <input type="password" id="senha" placeholder="SENHA"[(ngModel)]="usuario.senha" name="senha">
+    <span class="error" *ngIf="error.senha">{{error.senha}}</span>
     <button class="btn btn-default">ENTRAR</button>
   </form>
 </div>

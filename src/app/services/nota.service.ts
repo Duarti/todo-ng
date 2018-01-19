@@ -4,34 +4,58 @@ import {Nota} from '../models/nota';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {API_URL} from '../configs/ApiConfig';
+import {AuthService} from './auth.service';
 
 @Injectable()
 export class NotaService implements Api {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthService) {
   }
 
-  get(...params): Observable<Nota []> {
+  get(pagina, filtro, busca): Observable<any> {
     return this.http.get(API_URL + '/notas', {
       headers: {
-        'Authorization': 'Bearer ' + '525aea4f99f9ca2bc4eb840c7eae0f55e77a2abca2282d9c12d84e4a95dd0d55'
+        'Authorization': 'Bearer ' + this.auth.getToken()
+      },
+      params: {
+        pagina: pagina,
+        filtro: filtro,
+        q: busca
+      },
+      observe: 'response'
+    });
+  }
+
+  getOne(): Observable<any> {
+    return null;
+  }
+
+  post(nota: Nota): Observable<any> {
+    return this.http.post(API_URL + '/notas', nota, {
+      headers: {
+        'Authorization': 'Bearer ' + this.auth.getToken()
       }
     });
   }
 
-  getOne(): Nota {
+  put(nota: Nota): Observable<any> {
     return null;
   }
 
-  post(nota: Nota): Nota {
-    return nota;
+  delete(nota: Nota): Observable<any> {
+    return this.http.delete(API_URL + '/notas/' + nota.id, {
+      headers: {
+        'Authorization': 'Bearer ' + this.auth.getToken()
+      },
+      observe: 'response'
+    });
   }
 
-  put(nota: Nota) {
-    return nota;
-  }
-
-  delete(nota: Nota) {
-    return nota;
+  patch(nota: Nota): Observable<any> {
+    return this.http.patch(API_URL + '/notas/' + nota.id, nota, {
+      headers: {
+        'Authorization': 'Bearer ' + this.auth.getToken()
+      }
+    });
   }
 }

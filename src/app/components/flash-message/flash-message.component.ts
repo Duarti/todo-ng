@@ -9,6 +9,7 @@ export class FlashMessageComponent implements OnInit {
 
   @Input() aberto: boolean;
   @Input() titulo: string;
+  @Input() acoes: Object[];
   constructor() { }
 
   ngOnInit() {

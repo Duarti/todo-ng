@@ -1,3 +1,26 @@
-<p>
-  nota works!
-</p>
+<div>
+  <div class="top">
+    <h2>{{nota.titulo}}</h2>
+    <div class="acoes">
+      <button (click)="editar(nota)">
+        <img src="./assets/images/edit.png" alt="editar" class="icon">
+      </button>
+      <button (click)="callFlashDeletarNota()">
+        <img src="./assets/images/delete.png" alt="deletar" class="icon">
+      </button>
+    </div>
+  </div>
+  <div class="tarefas">
+    <ul>
+      <li *ngFor="let tarefa of nota.tarefas">
+        <label>
+          <input type="checkbox" [(ngModel)]="tarefa.feita" (change)="checkTarefa(tarefa)">
+          <span>
+            {{tarefa.titulo}}
+          </span>
+        </label>
+        <button (click)="callFlashDeletarTarefa(tarefa)">X</button>
+      </li>
+    </ul>
+  </div>
+</div>

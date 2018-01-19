@@ -1,25 +1,61 @@
 <div id="app">
-  <app-menu></app-menu>
+  <app-menu [atualizacao]="atualizacao" [atualizar]="atualizar" [(busca)]="busca"></app-menu>
   <div class="container">
     <div class="barra-top">
       <form id="filtros">
         <label>
-          <input type="radio" name="filtro" value="todos" checked>
+          <input type="radio" name="filtro" value="todos"  [(ngModel)]="filtro" checked (change)="getNotas()">
           todos
         </label>
         <label>
-          <input type="radio" name="filtro" value="completados">
+          <input type="radio" name="filtro" value="completados"  [(ngModel)]="filtro" (change)="getNotas()">
           completados
         </label>
         <label>
-          <input type="radio" name="filtro" value="inacabados">
+          <input type="radio" name="filtro" value="inacabados"  [(ngModel)]="filtro" (change)="getNotas()">
           inacabados
         </label>
       </form>
-      <button class="btn btn-default">CRIAR UMA NOTA</button>
+      <button class="btn btn-default" (click)="aberto = true">CRIAR UMA NOTA</button>
     </div>
-    <app-flash-message [aberto]="false">
-      TEST
-    </app-flash-message>
+    <div class="lista-notas">
+      <app-nota *ngFor="let nota of notas" [nota]="nota" [flashMessage]="flashMessage" [atualizar]="atualizar" [editar]="editarNota" class="nota"></app-nota>
+    </div>
+    <div class="paginacao">
+      <button class="btn" (click)="voltarPagina()"><</button>
+      <ul>
+        <li *ngFor="let i of paginas.total" [class]="i === paginas.atual ? 'active' : ''" (click)="irParaPagina(i)">{{i}}</li>
+      </ul>
+      <button class="btn" (click)="proximaPagina()">></button>
+    </div>
   </div>
+  <app-flash-message
+    [aberto]="aberto"
+    [acoes]="modalNotaAcoes">
+    <form (submit)="salvarNotaEvent($event)">
+      <label class="full">
+        <input type="text" placeholder="Insira um Título" class="full" [(ngModel)]="nota.titulo" name="titulo">
+        <span class="error" *ngIf="errors.titulo">{{errors.titulo}}</span>
+      </label>
+      <ul class="lista-tarefas">
+        <li *ngFor="let tarefa of nota.tarefas; let i = index">
+          <input type="checkbox" [name]="i+1" [(ngModel)]="tarefa.feita">
+          <span contenteditable="true" (blur)="mudarTituloTarefa($event, tarefa)">{{tarefa.titulo}}</span>
+        </li>
+      </ul>
+      <span class="error" *ngIf="errors.tarefas">{{errors.tarefas}}</span>
+    </form>
+    <form (submit)="adicionarTarefa($event)">
+      <div class="full" id="adicionarTarefa">
+        <button>+</button>
+        <input type="text" placeholder="Adicionar item" [(ngModel)]="tarefa.titulo" name="tarefa" class="full">
+      </div>
+      <span class="error" *ngIf="errors.tituloTarefa">{{errors.tituloTarefa}}</span>
+    </form>
+  </app-flash-message>
+  <app-flash-message
+    [aberto]="flashMessage.flashAberto"
+    [acoes]="flashMessage.flashAcoes">
+    {{flashMessage.flashText}}
+  </app-flash-message>
 </div>

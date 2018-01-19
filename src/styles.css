@@ -3,6 +3,12 @@
   outline: none;
 }
 
+ul {
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -44,6 +50,10 @@ input[type='radio']:checked:before {
   font-weight: bold;
 }
 
+input[type='checkbox']:checked ~ span {
+  text-decoration: line-through;
+}
+
 .full {
   width: 100%;
 }
@@ -53,10 +63,12 @@ input[type='radio']:checked:before {
   width: 100%;
   margin: 0 auto;
   padding: 0 15px;
+  position: relative;
 }
 
 .btn {
   padding: 10px 15px;
+  margin: 0 5px;
 }
 
 .btn.btn-default {
@@ -66,5 +78,85 @@ input[type='radio']:checked:before {
 }
 
 .btn.btn-default:hover {
-  background-color: #ecd15d;
+  background-color: #f9e06e;
+}
+
+.error {
+  color: #d04924;
+}
+
+.lista-notas {
+  justify-content: flex-start;
+}
+
+.nota {
+  padding: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3), -2px -2px 2px rgba(0, 0, 0, 0.3);
+  margin: 25px 25px;
+  width: 100%;
+  max-width: 25%;
+  min-width: 250px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.nota .top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nota .acoes {
+  display: flex;
+}
+
+.nota h2 {
+  word-break: break-all;
+}
+
+.nota .tarefas ul li span {
+  word-break: break-all;
+}
+
+.icon {
+  max-width: 20px;
+}
+
+.paginacao {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  bottom: 50px;
+  max-width: 1280px;
+  margin: auto;
+}
+
+.paginacao button {
+  font-size: 26px;
+  font-weight: bold;
+  margin:0 2px;
+  padding:0;
+}
+
+.paginacao ul{
+  display: flex;
+}
+
+.paginacao ul li{
+  background-color: #d2ba53;
+  padding: 5px;
+  font-size: 18px;
+}
+
+.paginacao ul li.active{
+  background-color: #a3974c;
+}
+
+.paginacao ul li:hover{
+  background-color: #efdd6f;
+  cursor: pointer;
 }

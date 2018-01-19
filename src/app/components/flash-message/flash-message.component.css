@@ -1,9 +1,9 @@
 .overlay {
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
   height: 100%;
   width: 100%;
-  top:0;
+  top: 0;
   left: 0;
   z-index: 800;
   display: flex;
@@ -11,10 +11,15 @@
   align-items: center;
 }
 
-.overlay .modal{
+.overlay .modal {
   background-color: white;
   width: 100%;
   max-width: 720px;
   padding: 20px;
-  box-shadow: 3px 3px 3px rgba(0,0,0,0.2), -3px -3px 3px rgba(0,0,0,0.2);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2), -3px -3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.actions {
+  justify-content: flex-end;
+  display: flex;
 }

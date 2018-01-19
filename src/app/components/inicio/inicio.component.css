@@ -9,3 +9,32 @@
   margin-right: 10px;
   white-space: nowrap;
 }
+
+#adicionarTarefa {
+  border: 1px solid #a3974c;
+  display: flex;
+  padding: 0px;
+  margin: 10px 0;
+}
+
+#adicionarTarefa *{
+  margin: 0px;
+  border: none;
+}
+
+#adicionarTarefa button {
+  font-size: 26px;
+  padding: 4px 10px;
+  background-color: #a3974c;
+  height: 100%;
+}
+
+#adicionarTarefa button:hover{
+  background-color: #d2ba53;
+}
+
+.lista-notas {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}

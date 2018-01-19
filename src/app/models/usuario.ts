@@ -10,6 +10,17 @@ export class Usuario {
   }
 
   getUserToken(): string {
-    return localStorage.getItem('USER_TOKEN');
+    if (this.isTokenOk()) {
+      return this.token;
+    }
+    this.token = localStorage.getItem('USER_TOKEN');
+    return this.token;
+  }
+
+  private isTokenOk() {
+    if (this.token === null || this.token === undefined) {
+      return false;
+    }
+    return true;
   }
 }
